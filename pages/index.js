@@ -13,40 +13,40 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Bem-vindo ao  <a href="https://instagram.com/projetoceos">Projeto Céos!</a>
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Projetin do João e da Ketlyn {' '}
+          <code className={styles.code}>dev</code>
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="https://garrulous-hero-1f4.notion.site/Projeto-C-os-Dev-Aprendiz-265d9164a0704b85a365b8826ac56116" className={styles.card}>
+            <h2>Documentação &rarr;</h2>
+            <p>Base de conhecimento do projeto</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+          <a href="/review" className={styles.card}>
+            <h2>Avaliações &rarr;</h2>
+            <p>Um CRUD de avaliações!</p>
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="/blog"
             className={styles.card}
           >
-            <h2>Deploy &rarr;</h2>
+            <h2>Blog &rarr;</h2>
+            <p>Um exemplo de blog.</p>
+          </a>
+
+          <a
+            href="/sobre"
+            className={styles.card}
+          >
+            <h2>Sobre &rarr;</h2>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              Um exemplo de página sobre.
             </p>
           </a>
         </div>
