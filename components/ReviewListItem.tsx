@@ -8,7 +8,7 @@ const ReviewListItem: React.FC<Props> = ({ review }) => {
   return (
     <Link href="/review/[id]" as={`/review/${review.id}`}>
       <a>
-        <article className="bg-gray-100 border-gray-400 rounded-lg p-6 m-4 transition duration-300 ease-in-out transform hover:-translate-y-2 ">
+        <article className="bg-pink-100 border-gray-400 rounded-lg p-6 m-4 transition duration-300 ease-in-out transform hover:-translate-y-2 ">
           <div className="text-center md:text-left">
             <span className="text-lg">{review.title}</span>
             <span className="text-lg">{review.rating}</span>

@@ -23,7 +23,7 @@ export default function ListReview({
     console.log(reviews);
     return (
       <Fragment>
-        <h1 className="m-4 text-center text-4xl text-blue-500">{msg}</h1>
+        <h1 className="m-4 text-center text-4xl text-purple-500">{msg}</h1>
         <div>
           <ReviewList reviews={reviews}/>
         </div>
