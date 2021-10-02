@@ -16,8 +16,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
     });
 
-    await response.json();
-
     return res.status(200).json({ status: "Success" });
   } else if (req.method === "PUT") {
     const data = req.body as EditReviewFormData;

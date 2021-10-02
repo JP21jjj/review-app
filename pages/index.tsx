@@ -27,7 +27,7 @@ export default function Home() {
             <p>Base de conhecimento do projeto</p>
           </a>
 
-          <a href="/review" className={styles.card}>
+          <a href="/reviews" className={styles.card}>
             <h2>Avaliações &rarr;</h2>
             <p>Um CRUD de avaliações!</p>
           </a>
