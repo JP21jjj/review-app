@@ -13,6 +13,6 @@ const ReviewList: React.FC<Props> = ({ reviews }) => {
       ))}
     </Fragment>
   );
-};
 
+};
 export { ReviewList };
