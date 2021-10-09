@@ -42,6 +42,7 @@ export default function ReviewDetailPage({
   return (
     <section className="m-4">
       <h1 className="m-4 text-center text-3xl text-red-400">{review.title}</h1>
+      <p className="m-4 text-center text-3xl text-red-400">{review.rating}</p>
       <p className="">{review.description}</p>
       <div className="mt-20 flex flex-col md:flex-row md:justify-end">
         <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block flex-grow md:inline md:flex-grow-0">
