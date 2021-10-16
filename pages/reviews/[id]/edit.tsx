@@ -4,6 +4,10 @@ import {
   EditReviewFormData
 } from "../../../components/EditReviewForm";
 import { useRouter } from "next/router";
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { id } = context.params;
@@ -35,20 +39,29 @@ export default function EditReviewPage({
   review
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   //const reviewObj = JSON.parse(review) as Review;
-  const router = useRouter();
-  function handleSubmit(data: EditReviewFormData) {
+ 
+ const router = useRouter();
+ const notifySucceso = (msg) => toast.success(msg);
+ const notifyError = (msg) => toast.error(msg);
+ function handleSubmit(data: EditReviewFormData) {
     try {
       sendData(review.id, data);
-      alert("Review updated successfully!");
+      //alert("Review updated successfully!");
+      notifySucceso("Avalição atualizada com sucesso")
       router.replace(`/reviews/${review.id}`);
     } catch (error) {
-      alert("Something went wrong :/");
+      //alert("Something went wrong :/");
+      notifyError("Ocorreu um problema");
+     
+
     }
   }
 
   return (
+    <>
     <section className="m-4">
       <EditReviewForm onSubmit={handleSubmit} review={review} reset={false} />
     </section>
+   </>
   );
 }

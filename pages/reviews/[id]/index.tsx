@@ -1,7 +1,11 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
+import React from 'react';
+ import { ToastContainer, toast } from 'react-toastify';
+ import 'react-toastify/dist/ReactToastify.css';
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+
+export async function getServerSideProps(context: GetServerSidePropsContext): Promise<{ props: { review: Review; }; }> {
   const { id } = context.params;
 
   const res = await fetch(`http://localhost:8081/api/reviews/${id}`);
@@ -31,12 +35,16 @@ export default function ReviewDetailPage({
     const answer = confirm("Are you sure you want to delete this review?");
     if (!answer) return;
 
+    const notifyError = (msg) => toast.error(msg);
+    const notifySuccess = (msg) => toast.success(msg);
     try {
       await deleteReview(id);
-      alert("Review deleted successfully!");
+      //alert("Review deleted successfully!");
+      notifySuccess("Avaliação deletada com sucesso");
       router.replace("/reviews");
     } catch (error) {
-      alert("Something went wrong :/");
+      //alert("Something went wrong :/");
+      notifyError("Avaliação Não deletada")
     }
   }
   return (

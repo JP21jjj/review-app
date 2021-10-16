@@ -24,7 +24,7 @@ const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
     setDescription("");
   }
   function isValid(data: EditReviewFormData): boolean {
-    return data.description !== "" && data.title !== "" && data.rating >= 0 && data.rating <= 10;
+    return  data.title !== "" && data.rating >= 0 && data.rating <= 10;
   }
   function onFormSubmit(e: FormEvent<HTMLFormElement>, data: EditReviewFormData) {
     e.preventDefault();
@@ -88,7 +88,6 @@ const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
           placeholder="Your description"
           value={description}
           onChange={e => setDescription(e.target.value)}
-          required
         />
       </div>
 
