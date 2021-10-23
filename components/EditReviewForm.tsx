@@ -1,13 +1,12 @@
-//EditReviewForm.tsx
-
 import { useState, FormEvent } from "react";
+import ReactStars from "react-rating-stars-component";
 
 export type EditReviewFormData = {
   title: string;
   rating: any;
   description: string;
 };
-
+ 
 type Props = {
   onSubmit: (data: EditReviewFormData) => void;
   review?: Review;
@@ -16,13 +15,18 @@ type Props = {
 
 const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
   const [title, setTitle] = useState(review?.title || "");
-  const [rating, setRating] = useState(review?.rating || "");
+  const [rating, setRating] = useState(review?.rating || 0);
   const [description, setDescription] = useState(review?.description || "");
   function doReset() {
     setTitle("");
     setRating(0)
     setDescription("");
   }
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    setRating(newRating*2);
+  };
   function isValid(data: EditReviewFormData): boolean {
     return  data.title !== "" && data.rating >= 0 && data.rating <= 10;
   }
@@ -55,23 +59,14 @@ const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
         />
       </div>
       <div className="mb-6">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="description"
-
-         > 
-
-        Rating
-        </label>
-        <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="rating"
-            type="any"
-            placeholder="Your Rating"
-            value={rating}
-            onChange={e => setRating(e.target.value)}
-            required
-          />
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={40}
+          value={rating/2}
+          isHalf={true}
+          activeColor="#ffd700"
+        />
         </div>
         <div className="mb-6">
           <label

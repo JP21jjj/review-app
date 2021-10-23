@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Projetin do João e da Ketlyn {' '}
+          Projeto do João e da Ketlyn {' '}
           <code className={styles.code}>dev</code>
         </p>
 

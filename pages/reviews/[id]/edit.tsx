@@ -37,7 +37,7 @@ async function sendData(id: number, data: EditReviewFormData) {
 
 export default function EditReviewPage({
   review
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element {
   //const reviewObj = JSON.parse(review) as Review;
  
  const router = useRouter();
