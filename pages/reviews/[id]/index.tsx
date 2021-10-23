@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 import React from 'react';
  import { ToastContainer, toast } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
-
+ import ReactStars from "react-rating-stars-component";
+ import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<{ props: { review: Review; }; }> {
   const { id } = context.params;
@@ -31,8 +33,25 @@ export default function ReviewDetailPage({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   //const postObj = JSON.parse(review) as Review;
   const router = useRouter();
-  async function handleDeleteButtonClick(id: number) {
-    const answer = confirm("Are you sure you want to delete this review?");
+
+  const confirmDelete = (id: number) => {
+    confirmAlert({
+      title: 'Confirmar exclusão',
+      message: 'Tem certeza que quer excluir essa avaliação?',
+      buttons: [
+        {
+          label: 'Sim',
+          onClick: () => handleDeleteButtonClick(true, id)
+        },
+        {
+          label: 'Não',
+          onClick: () => handleDeleteButtonClick(false, id)
+        }
+      ]
+    });
+  };
+
+  async function handleDeleteButtonClick(answer: boolean, id: number) {
     if (!answer) return;
 
     const notifyError = (msg) => toast.error(msg);
@@ -50,14 +69,20 @@ export default function ReviewDetailPage({
   return (
     <section className="m-4">
       <h1 className="m-4 text-center text-3xl text-red-400">{review.title}</h1>
-      <p className="m-4 text-center text-3xl text-red-400">{review.rating}</p>
+          <ReactStars
+          count={5}
+          size={39}
+          edit={false}
+          value={review.rating}
+          activeColor="#ffd700"
+        />
       <p className="">{review.description}</p>
       <div className="mt-20 flex flex-col md:flex-row md:justify-end">
         <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block flex-grow md:inline md:flex-grow-0">
           <a href={`/reviews/${review.id}/edit`}>Edit</a>
         </button>
         <button
-          onClick={() => handleDeleteButtonClick(review.id)}
+          onClick={() => confirmDelete(review.id)}
           className="bg-red-500 text-red font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block flex-grow mt-2 md:inline md:flex-grow-0 md:m-0 md:ml-1"
         >
           Delete
