@@ -3,6 +3,7 @@ import '../styles/styles.css'
 import { Fragment } from "react"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -19,17 +20,23 @@ function MyApp({ Component, pageProps }) {
           <nav>
             <ul className="flex justify-between items-center p-8 bg-pink-100">
               <li>
-                <a href="/" className="text-red-500 no-underline">
+                <Link  href="/">
+                <a className="text-red-500 no-underline">
                   Home
                 </a>
+                </Link>
 
-                <a href="/about" className="text-red-500 no-underline p-8">
+                <Link href="/about">
+                <a className="text-red-500 no-underline p-8">
                   About
                 </a>
+                </Link>
 
-                <a href="/blog" className="text-red-500 no-underline">
+                <Link href="/blog">
+                <a className="text-red-500 no-underline">
                   Blog
                 </a>
+                </Link>
               </li>
             </ul>
           </nav>
